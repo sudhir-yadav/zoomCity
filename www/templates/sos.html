@@ -1,0 +1,90 @@
+<style type="text/css">
+  .bar.bar-light .title {
+color: #F7F4F4;
+}
+.bar-light_sd
+{
+  background: rgb(255, 0, 60) !important;
+color: #fff;
+}
+  #map-canvas { height: 100% }
+  .scroll {
+    height: 100%;
+}
+ 
+#map {
+    width: 100%;
+    height: 100%;
+}
+.tab-item
+{
+  max-width:none;
+}
+
+.number_input span
+{
+       /* display: block; */
+    width: 38px;
+    height: 34px;
+    float: left;
+    margin-left: -13px;
+    border-right: 1px solid #dadada;
+    margin-right: 1px;
+    overflow: hidden;
+    position: absolute;
+    /* padding-top: 4px; */
+    padding: 2px;
+    padding-top: 7px; 
+}
+.number_input input
+{
+  margin-left: 32px;  
+}
+
+</style>
+
+<ion-view ng-init="getContacts()" view-title="Category listing" hide-nav-bar="true">
+
+ <div class="bar bar-header bar-light bar-light_sd">
+  <button ng-click="toggleLeftSideMenu()" class="button button-icon icon ion-navicon" style="color:#fff;"></button>
+  
+  <h1 class="title">Zoom City</h1>
+  </div>
+
+   <div class="bar bar-subheader item-input-inset">    
+      <div class="buttons">
+        <button class="button button-icon icon ion-minus-circled"
+          ng-click="data.showDelete = !data.showDelete; data.showReorder = false"></button>
+      </div>
+      <h1 class="title">Contact List</h1>
+  </div> 
+
+  <ion-content  class="has-subheader" >
+
+      <ion-list show-delete="data.showDelete" >
+
+        <ion-item ng-repeat="item in items" item="item" style="border-bottom:1px solid #efefef !important;margin:0.02em;"   class="item-remove-animate">
+          <h2>{{ item.contact_name}}</h2>
+          <p>{{ item.contact_no}}</p>
+          <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item,{{item.contact_id}})"></ion-delete-button>
+          <!-- <ion-option-button class="button-assertive" ng-click="edit(item)"> Edit </ion-option-button> -->
+
+        </ion-item>
+      
+      </ion-list>
+
+      <div style="text-align:center;margin:10px;">
+        <a ng-if="items.length > 0" class="button button-outline icon-right  button-balanced" ng-click="sendMsg()">Send Msg </a>
+        <a ng-if="items.length < 3" class="button button-outline icon-right button-balanced" ng-click="showPopup()">Add Contact  </a>
+        
+      </div>
+       
+
+
+  </ion-content>
+
+
+
+
+
+</ion-view>

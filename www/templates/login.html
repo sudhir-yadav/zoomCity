@@ -1,0 +1,116 @@
+<style>
+
+  ion-content{background: url("img/bg.jpg") center no-repeat !important;background-size: 144% !important;}
+    a{text-decoration:none;color:#fff;cursor:pointer;}
+    .startup_pg_logo{background:url('img/logo.png')center no-repeat;background-size:100%;height:130px;width:130px;margin:auto;float:left;}
+    .startup_pg_main{margin:auto;margin-top:25%;height:75%;}
+    .startup_pg_main .top_div{margin:auto;height:42%;text-align:center;}
+    .startup_pg_main .bottom_div{ text-align:center;line-height:30px;margin-top:8%; }
+    
+    .login_input{
+                  padding: 10px !important;
+                  border-radius: 4px;
+                  height: 50px !important;
+                  border: 1px solid #020202 !important;
+                  width: 85%;
+                  margin: auto;
+                  outline: none;
+                  -webkit-appearance: none;
+                  margin-top: 0px;
+                  margin-bottom: 3px;
+                  background: rgba(0,0,0,0.4);
+                  color: #fff !important;
+    }
+
+    .login_input::-webkit-input-placeholder {
+   color: rgba(255,255,255,0.8);
+}
+
+    .login_form{padding:10px;overflow:hidden;text-align:center;}
+    .err_field{border:1px solid red !important;}
+.err{color:#fff;font-size:12px;display:block;width:100%;}
+ .has-header_cst {
+top: 0px !important;
+}
+    /*.login_form input[type="text"]{border-bottom:none !important;border-radius:5px 5px 0 0;}
+    .login_form input[type="password"]{border-radius:0 0 5px 5px;}*/
+  
+  
+  .header_btn{background: transparent;border-radius:30px;
+font-size: 25px !important;
+height:30px !important;width:30px !important;
+line-height:30px;
+padding:0px;
+color: #fff;
+margin: 0px 0px 0px 0px;border:none;display:block;}
+
+
+.header_custom1{background:transparent;border:none;color:#fff;}
+.zoom_cstm_btn
+{
+color: white;
+background: rgb(255, 0, 60);
+outline: none;
+margin: auto;
+margin-top: 7px;
+border: none;
+display: block;
+text-align: center;
+height: 52px;
+padding: 10px !important;
+width: 83%;
+border-radius: 5px;
+font-size: 15px;
+font-weight: 400;
+overflow: hidden;
+}
+
+</style>
+<ion-view  hide-nav-bar="true">
+
+
+
+  <ion-content class="has-header_cst ion-content_cstm1">
+
+    
+   <div class="startup_pg_main" >
+
+           <div class="top_div">
+              <div style="width:70%;display:block;margin:auto;">
+                <span style="font-size:25px;color:#fff;"> Welcome to <br/>
+                   <span style="font-size:34px;display:block;margin-top:6px;color:#ff003c;font-weight:700;"> Zoom City </span>
+                 </span>
+              </div>
+           </div>
+
+           <div class="bottom_div" >
+             
+               <form id="login" name="login" class="login_form" ng-submit="submitLoginForm(login.$valid)" novalidate>
+
+              <input ng-model="loginData.email" name="email" class="login_input" type="email" placeholder="Enter your email address" required=""/>
+             
+                  <div ng-show="login.$submitted " >
+                    <span class="err" ng-show="login.email.$error.required">Email is required</span>
+                  </div>
+              <input ng-model="loginData.password" name="password" class="login_input" type="password" placeholder="Enter your password" required=""/>
+
+                  <div ng-show="login.$submitted " >
+                    <span class="err" ng-show="login.password.$error.required">Password is required</span>
+                  </div>
+                   
+
+                  <button class="zoom_cstm_btn" > Login Now  <i class="fa fa-sign-in"></i> </button>
+                  <a  ng-click="showSignup()" class="zoom_cstm_btn">Not Registered yet .? Click here </a>
+                  <a ng-click="showPopup()" style="color:#fff;display:block;font-size:16px;margin-top:6px;">Forgot Password .?</a>
+                  
+                  
+               </form>
+
+
+
+           </div>
+     
+     </div>
+
+  </ion-content>
+</ion-view>

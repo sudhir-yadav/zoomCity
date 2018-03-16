@@ -1,0 +1,154 @@
+<style type="text/css">
+  .bar.bar-light .title {
+color: #F7F4F4;
+}
+.bar-light_sd
+{
+  background: rgb(255, 0, 60) !important;
+color: #fff;
+}
+
+a
+{
+  text-decoration: none;
+  color: inherit;;
+}
+
+.item-images img
+{
+  height: 80px;
+  margin-right:15px;
+}
+
+.loc_info
+{
+ border-bottom:1px solid #dadada;background:#F5F5F5;width:100%;
+}
+
+.loc_info_head,.loc_info_foot
+{
+    margin: 0;
+  display: block;
+  text-align: center;
+  
+  padding: 8px;
+  font-size: 16px;
+}
+.loc_info_head { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.loc_info_foot { border-top: 1px solid rgba(0,0,0,0.1); }
+.loc_info_body
+{
+  padding:10px;
+}
+.set_loc{
+   color: #fff;
+  background: rgb(255, 0, 60);
+  border: none;
+  padding: 4px;
+  margin: 1px;
+  border-radius: 3px;
+  display: inline-block;
+  width: 129px;
+  font-size: 13px;
+}
+
+.set_loc:active
+{
+  background:#fff;
+  color:rgb(255, 0, 60);
+  border:1px solid rgb(255, 0, 60);
+}
+/*.scroll */ 
+ion-scroll{
+  border-bottom: 1px solid #dadada;
+}
+
+
+</style>
+
+<ion-view ng-init="getaditionalInfo()"  view-title="Category listing" hide-nav-bar="true" on-swipe-left="onSwipeLeft()">
+
+
+ <div class="bar bar-header bar-light bar-light_sd">
+ <button ng-click="myGoBack()" class="button button-icon fa fa-angle-left" style="color:#fff;">
+  </button>
+  <button ng-click="toggleLeftSideMenu()" class="button button-icon icon ion-navicon" style="color:#fff;"></button>
+  
+
+  <h1 class="title">Zoom City</h1>
+  </div>
+
+   <div class="bar bar-subheader item-input-inset">
+    
+    <h4>{{marker_name}}</h4>
+      <a ng-if="isAdmin == 0" href="#/app/route_map/{{marker_name}}/route/{{additionalInfo.lat}}/{{additionalInfo.longi}}" class="button pull-right" style="color:#fff;background:rgb(255, 0, 60);border:none;">Route </a>
+
+  </div> 
+
+  <ion-content class="has-subheader" >
+
+   <div class="list" ng-if="isAdmin == 0">
+
+
+          <div class="item item-text-wrap">
+
+                <h2>Description</h2><br/>
+                <p>
+                 {{additionalInfo.desc}}
+                </p>
+
+          </div>
+
+          <div class="item item-text-wrap">
+
+             <h2>Address</h2><br/>
+                <p>
+                 {{additionalInfo.address}}
+                </p>
+
+          </div>
+
+          <div class="item">
+
+             <h2>Contact Number</h2><br/>
+                <p>
+                 {{additionalInfo.contact}}
+                </p>
+
+          </div>
+
+            <ion-scroll direction="x" class="item item-images" style="width: 100%; height:110px;" >       
+                  <img ng-repeat="image in additionalInfo.img" src="{{image}}">         
+           </ion-scroll>
+
+   </div>
+
+   <div class="list" ng-init="getCurrentLocation()" style="position:relative;height:100%;" ng-if="isAdmin == 1" >
+
+        <div class="loc_info">
+          <h4 class="loc_info_head">Your Current Location</h4>
+          <div class="loc_info_body">
+             <span> 
+              <table>
+                <tr><td>Latitude </td><td>&nbsp; : {{lat}}</td></tr>
+                <tr><td>Longitude </td><td>&nbsp; : {{longi}}</td></tr>
+              </table>
+              </span>
+          </div>
+
+          <span class="loc_info_foot">
+            <a ng-if="isAdmin == 1" ng-click="getCurrentLocation()" class="set_loc"> <i class="fa fa-refresh"></i> &nbsp;Refresh location </a>
+            <a ng-if="isAdmin == 1 && lat != undefined" ng-click="setCurrentLocation(lat,longi)" class="set_loc"> <i class="fa fa-map-marker"></i> &nbsp;Set Location </a>
+          </span>
+      
+        </div>
+ 
+         <div  id="map-2"  data-tap-disabled="true" style="width:100%; height:300px;"></div>
+
+
+   </div>
+
+  </ion-content>
+
+
+</ion-view>

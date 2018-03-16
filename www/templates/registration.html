@@ -1,0 +1,98 @@
+<style>
+ .bar.bar-light .title {
+color: #F7F4F4;
+}
+.bar-light_sd
+{
+  background: rgb(255, 0, 60) !important;
+color: #fff;
+}
+/*ion-header-bar{background:rgba(0,0,0,0.2) !important;color:#fff;font-size:20px;font-weight:300;}*/
+.ion-content{background: url("img/bg.jpg") center no-repeat !important;background-size: 250% !important;}
+#registration{padding:15px;padding-top:30px;margin:15px;margin-top:20px;background:rgba(255,255,255,0.3);border-radius:7px;}
+.err_field{border:1px solid red !important;}
+.err{color:red;font-size:12px;display:block;width:100%;}
+</style>
+
+<ion-modal-view>
+  <!-- <ion-header-bar class="bar bar-header">
+    <h1 class="title">Registration</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeSignup()"><i class="ion-close" ></i></button>
+    </div>
+  </ion-header-bar> -->
+
+  <div class="bar bar-header bar-light bar-light_sd">
+  <h1 class="title">Registration</h1>
+    <div class="buttons">
+      <button class="button button-clear" style="color:#fff;" ng-click="closeSignup()"><i class="ion-close" ></i></button>
+    </div>
+  </div>
+
+  <ion-content class="ion-content has-header">
+
+     <form name="registration" id="registration"  ng-submit="submitRegistrationForm(registration.$valid)" novalidate>
+
+                  <label style="color:#fff;font-size:16px;">Full name *:
+                  </label>
+
+                    <input  ng-model="registerData.fullname" name="fullname" style="padding:20px 5px 20px 5px !important;"  id="fullname" type="text"  placeholder="eg : My name" required="" >
+
+                    <div ng-show="registration.$submitted " >
+                        <span class="err" ng-show="registration.fullname.$error.required">Full name is required</span>
+                    </div>
+
+                    <label style="color:#fff;font-size:16px;">Email *:
+                  </label>
+ 
+
+                    <input  ng-model="registerData.email" name="email" style="padding:20px 5px 20px 5px !important;"  id="email" type="email"  placeholder="eg : myname@gmail.com" required="" pattern=".{1,}@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+">
+
+                    <div ng-show="registration.$submitted " >
+                        <span class="err" ng-show="registration.email.$error.required">Email is required</span>
+                        <span class="err" ng-show="registration.email.$error.pattern && !registration.email.$pristine && !registration.email.$error.required">Invalid email address</span>
+                    </div>
+
+                     <label style="color:#fff;font-size:16px;">Mobile no *:
+                  </label>
+ 
+
+                    <input style="padding:20px 5px 20px 5px !important;" ng-model="registerData.phone" name="phone" id="phone"  type="text" pattern="\d*" placeholder="Enter phone number " required="" ng-minlength="10" ng-maxlength="10"/>
+
+                    <div ng-show="registration.$submitted " >
+                    <span class="err" ng-show="registration.phone.$error.required">Phone number is required</span>
+                    <span class="err" ng-show="registration.phone.$error.minlength || registration.phone.$error.maxlength">
+                      Invalid phone number 
+                    </span>
+                  </div>
+
+                  <label style="color:#fff;font-size:16px;">Password *:</label>
+
+                    <input  name="password" ng-model="registerData.password" style="padding:20px 5px 20px 5px !important;"  id="password" type="password" placeholder="Enter your password" required="" ng-minlength="4">
+
+                    <div ng-show="registration.$submitted " >
+                        <span class="err" ng-show="registration.password.$error.required">Password required</span>
+                        <span class="err" ng-show=" registration.password.$error.minlength && !registration.password.$error.required"> Password is too short</span>
+                    </div>
+                  
+                  <label style="color:#fff;font-size:16px;">Confirm password *:  </label>
+
+                    <input  ng-model="registerData.cpassword" style="padding:20px 5px 20px 5px !important;"  id="cpassword" type="password" placeholder="Conform your password" match="registerData.password"  name='cpassword' required="" >
+                    
+                    <div ng-show="registration.$submitted " >
+                        <span class="err" ng-show="registration.cpassword.$error.required">Please retype password</span>
+                        <span class="err" ng-show="registration.cpassword.$error.match && !registration.cpassword.$error.required">Password did not match</span>
+                    </div>
+
+
+                   <button  style="margin-top:20px;background:red;color:#fff;" class="button button-block " type="submit">Register</button>
+      </form>
+
+
+  </ion-content>
+
+
+
+</ion-modal-view>
+
+

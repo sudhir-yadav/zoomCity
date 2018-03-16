@@ -1,0 +1,80 @@
+<style type="text/css">
+  .bar.bar-light .title {
+color: #F7F4F4;
+}
+.bar-light_sd
+{
+  background: rgb(255, 0, 60) !important;
+color: #fff;
+}
+
+
+.grid_category_block
+{
+  padding: 15px;
+float: left;
+width: 50%;
+text-align: center;
+font-size: 15px;
+border: 0.07em solid #EAEAEA;
+}
+.grid_category_block i
+{
+  height: 55px;
+display: block;
+}
+a
+{
+  text-decoration: none;
+  color: inherit;
+}
+.list .item .icon
+{
+  color:rgb(255, 0, 60);
+}
+.search_results
+{
+    height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  margin-top:44px;
+  left: 0;
+  overflow: hidden;
+  background: #fff;
+  display:none;
+}
+</style>
+
+<ion-view view-title="About application" hide-nav-bar="true">
+
+  <div class="bar bar-header bar-light bar-light_sd">
+   <button ng-click="myGoBack()" class="button button-icon fa fa-angle-left" style="color:#fff;">
+  </button>
+
+  <button ng-click="toggleLeftSideMenu()" class="button button-icon icon ion-navicon" style="color:#fff;">
+  </button>
+  <h1 class="title">Zoom City</h1>
+  </div>
+
+  <div class="bar bar-subheader item-input-inset" style="background:#C3C3C3;">
+  <label class="item-input-wrapper" style="background:#fff;border-radius:30px;">
+    <i class="icon ion-ios7-search placeholder-icon"></i>
+    <input ng-model="searchText.name" ng-keyup="customFilter(searchText.name,'catlist_display')" type="search" placeholder="Search">
+  </label>
+</div>
+
+<div id='catlist_display' class="search_results"></div>
+  <ion-content  class="has-subheader">
+
+    <ul class="list">
+      <div class="item item-divider" style="color: rgb(255, 0, 60);font-weight: 600;font-size:18px;">
+        {{CatGridNm}}
+      </div>
+      <a ng-repeat="list in catListing " class="item item-icon-right" href="#/app/entity_listing/{{list.id}}/{{list.name}}/{{CatGridNm}}">{{list.name}}<i class="icon fa fa-angle-right" ></i></a>
+
+    </ul>
+
+  </ion-content>
+
+</ion-view>
